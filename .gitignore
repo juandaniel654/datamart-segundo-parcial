@@ -1,0 +1,8 @@
+.env
+data/*.csv
+__pycache__/
+*.pyc
+.venv/
+ssh_keys/
+*.pem
+*.key
