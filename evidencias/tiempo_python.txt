@@ -1,0 +1,4 @@
+Registros procesados: 5000000
+Resultados generados: 60
+Tiempo Python: 17.993 segundos
+Archivo: resultados/python_completo.tsv

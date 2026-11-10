@@ -1,0 +1,18 @@
+===== EXAMEN SEGUNDO PARCIAL =====
+1. CONTENEDORES
+NAME           IMAGE        COMMAND                  SERVICE   CREATED          STATUS                    PORTS
+examen-api-1   examen-api   "python app.py"          api       4 minutes ago    Up 4 minutes              127.0.0.1:8082->5000/tcp
+examen-db-1    mysql:8.0    "docker-entrypoint.s…"   db        14 minutes ago   Up 14 minutes (healthy)   3306/tcp, 33060/tcp
+2. ARCHIVO CSV
+Lineas: 5000001
+323M	data/ventas.csv
+3. HADOOP MAPREDUCE
+Resultados: 60
+4. MYSQL
+Registros MySQL: 60
+5. API FLASK
+{"mysql":"conectado"}
+
+6. CONSULTA DE INGRESOS
+Consulta correcta
+===== VERIFICACIONES COMPLETADAS =====

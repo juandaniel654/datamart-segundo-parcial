@@ -6,3 +6,24 @@ __pycache__/
 ssh_keys/
 *.pem
 *.key
+
+mysql/datos/
+/ssh/
+
+# Credenciales y claves
+.env
+.env.*
+!.env.example
+/ssh/
+
+# Datos privados y archivos grandes
+/mysql/datos/
+/data/*.csv
+
+# Archivos temporales
+*.bak
+__pycache__/
+*.pyc
+
+# Archivos auxiliares Hadoop
+*.crc

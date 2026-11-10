@@ -1,0 +1,7 @@
+COMPARACION DE PROCESAMIENTO
+Registros: 5000000
+Resultados: 60
+Python: 17.993 segundos
+Hadoop: 24.104 segundos
+Resultados identicos: SI
+Hadoop: modo local

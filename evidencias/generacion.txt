@@ -1,0 +1,2 @@
+Archivo generado: data/ventas.csv
+Registros generados: 5000000

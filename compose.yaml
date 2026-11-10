@@ -1,0 +1,49 @@
+services:
+
+  hadoop:
+    build:
+      context: ./hadoop
+    image: datamart-hadoop:latest
+    hostname: hadoop
+    environment:
+      HADOOP_HEAPSIZE_MAX: "768m"
+    mem_limit: 2g
+    cpus: 2
+    ports:
+      - "127.0.0.1:2223:22"
+    volumes:
+      - ./data:/work/data:ro
+      - ./resultados:/work/resultados
+      - ./hadoop:/work/hadoop:ro
+      - ./ssh/authorized_keys:/home/hadoop/.ssh/authorized_keys:ro
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./mysql/datos:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 40s
+
+  api:
+    build: ./api
+    ports:
+      - "127.0.0.1:8082:5000"
+    environment:
+      DB_HOST: db
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
